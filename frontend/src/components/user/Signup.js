@@ -17,9 +17,9 @@ function Signup() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors(validation(values));
-    const correctInput =
-      errors.name === "" && errors.email === "" && errors.password === "";
-    if (correctInput) {
+    const currectInput =
+      errors.email === "" && errors.password === "" && errors.name === "";
+    if (currectInput) {
       axios
         .post("http://localhost:8081/signup", values)
         .then((res) => {

@@ -52,16 +52,16 @@ app.post("/signin", (req, res) => {
 
 //todo
 
-app.get("/user/:id", (req, res) => {
-  const sql = "SELECT * FROM task  WHERE `id` = ?";
-  db.query(sql, req.params.id, (err, data) => {
+app.get("/user/:user_id", (req, res) => {
+  const sql = "SELECT * FROM task  WHERE `user_id` = ?";
+  db.query(sql, req.params.user_id, (err, data) => {
     if (err) return console.log(err);
     return res.json(data);
   });
 });
 app.post("/create", (req, res) => {
-  const sql = "INSERT INTO task (`description`,`done`,`id`) VALUES (?)";
-  const values = [req.body.description, false, req.body.id];
+  const sql = "INSERT INTO task (`description`,`done`,`user_id`) VALUES (?)";
+  const values = [req.body.description, false, req.body.user_id];
   db.query(sql, [values], (err, data) => {
     if (err) return console.log(err);
     return res.json(data);
@@ -69,26 +69,26 @@ app.post("/create", (req, res) => {
 });
 
 app.put("/edit", (req, res) => {
-  const sql = "UPDATE task SET `description` = ? WHERE `taskID` = ?";
+  const sql = "UPDATE task SET `description` = ? WHERE `task_id` = ?";
 
-  db.query(sql, [req.body.description, req.body.taskID], (err, data) => {
+  db.query(sql, [req.body.description, req.body.task_id], (err, data) => {
     if (err) return console.log(err);
     return res.json(data);
   });
 });
 
-app.delete("/delete/:taskID", (req, res) => {
-  const sql = "Delete FROM task WHERE `taskID` = ?";
-  db.query(sql, [req.params.taskID], (err, data) => {
+app.delete("/delete/:task_id", (req, res) => {
+  const sql = "Delete FROM task WHERE `task_id` = ?";
+  db.query(sql, [req.params.task_id], (err, data) => {
     if (err) return res.json("Error");
     return res.json(data);
   });
 });
 
 app.put("/editdone", (req, res) => {
-  const sql = "UPDATE task SET `done` = ? WHERE `taskID` = ?";
+  const sql = "UPDATE task SET `done` = ? WHERE `task_id` = ?";
 
-  db.query(sql, [req.body.done, req.body.taskID], (err, data) => {
+  db.query(sql, [req.body.done, req.body.task_id], (err, data) => {
     if (err) return console.log(err);
     return res.json(data);
   });

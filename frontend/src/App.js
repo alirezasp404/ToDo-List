@@ -13,9 +13,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Signin />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/home/:id" element={<Home />}></Route>
-        <Route path="/edit/:taskID/:id" element={<EditTask />}></Route>
-        <Route path="/create/:id" element={<CreateTask />}></Route>
+        <Route path="/home/:user_id" element={<Home />}></Route>
+        <Route path="/edit/:task_id/:user_id" element={<EditTask />}></Route>
+        <Route path="/create/:user_id" element={<CreateTask />}></Route>
       </Routes>
     </BrowserRouter>
   );

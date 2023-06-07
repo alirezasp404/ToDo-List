@@ -1,9 +1,3 @@
-# Demo
-
-![](./demo/1.png)
-<br><br><br>
-![](./demo/2.png)
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

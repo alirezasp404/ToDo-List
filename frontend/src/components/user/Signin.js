@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import validation from "./SigninValidation";
 import axios from "axios";
@@ -12,13 +12,11 @@ function Signin() {
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors(validation(values));
-    const correctInput = errors.email === "" && errors.password === "";
-
-    if (correctInput) {
+    const currectInput = errors.email === "" && errors.password === "";
+    if (currectInput) {
       axios
         .post("http://localhost:8081/signin", values)
         .then((res) => {

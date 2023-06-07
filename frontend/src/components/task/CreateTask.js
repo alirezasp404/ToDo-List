@@ -1,20 +1,21 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import DescriptionInput from "./DescriptionInput";
 
 function CreateTask() {
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { user_id } = useParams();
   function handleSubmit(event) {
     event.preventDefault();
 
-    if (description.length > 0) {
+    if (description.length > 0 && description.length < 80) {
       axios
-        .post("http://localhost:8081/create", { description, id })
+        .post("http://localhost:8081/create", { description, user_id })
         .then((res) => {
           console.log(res);
-          navigate(`/home/${id}`);
+          navigate(`/home/${user_id}`);
         })
         .catch((err) => console.log(err));
     }
@@ -24,16 +25,7 @@ function CreateTask() {
       <div className="w-50 bg-white rounded p-3">
         <form onSubmit={handleSubmit}>
           <h2>Add Task</h2>
-          <div className="mb-3">
-            <label htmlFor="description">Description</label>
-            <input
-              id="description"
-              type="text"
-              placeholder="Enter description"
-              className="form-control"
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
+          <DescriptionInput setDescription={setDescription} />
           <button className="btn btn-warning">Submit</button>
         </form>
       </div>
