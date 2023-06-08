@@ -1,6 +1,6 @@
 import React from "react";
-import { ReactComponent as CircleCheck } from "../../logo/square-check.svg";
-import { ReactComponent as Circle } from "../../logo/square.svg";
+import { ReactComponent as CircleCheck } from "../../img/square-check.svg";
+import { ReactComponent as Circle } from "../../img/square.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
 function TaskList({ task }) {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import validation from "./SigninValidation";
 import axios from "axios";
-import { ReactComponent as TodoImg } from "../../logo/task-list.svg";
+import { ReactComponent as TodoImg } from "../../img/task-list.svg";
 
 function Signin() {
   const [values, setValues] = useState({
